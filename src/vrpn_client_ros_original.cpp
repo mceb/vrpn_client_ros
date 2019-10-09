@@ -176,13 +176,13 @@ namespace vrpn_client_ros
         tracker->pose_msg_.header.stamp = ros::Time::now();
       }
 
-      tracker->pose_msg_.pose.position.x = tracker_pose.pos[2];
-      tracker->pose_msg_.pose.position.y = tracker_pose.pos[0];
-      tracker->pose_msg_.pose.position.z = tracker_pose.pos[1];
+      tracker->pose_msg_.pose.position.x = tracker_pose.pos[0];
+      tracker->pose_msg_.pose.position.y = tracker_pose.pos[1];
+      tracker->pose_msg_.pose.position.z = tracker_pose.pos[2];
 
-      tracker->pose_msg_.pose.orientation.x = tracker_pose.quat[2];
-      tracker->pose_msg_.pose.orientation.y = tracker_pose.quat[0];
-      tracker->pose_msg_.pose.orientation.z = tracker_pose.quat[1];
+      tracker->pose_msg_.pose.orientation.x = tracker_pose.quat[0];
+      tracker->pose_msg_.pose.orientation.y = tracker_pose.quat[1];
+      tracker->pose_msg_.pose.orientation.z = tracker_pose.quat[2];
       tracker->pose_msg_.pose.orientation.w = tracker_pose.quat[3];
 
       pose_pub->publish(tracker->pose_msg_);
@@ -211,13 +211,13 @@ namespace vrpn_client_ros
         tracker->transform_stamped_.child_frame_id = tracker->tracker_name;
       }
 
-      tracker->transform_stamped_.transform.translation.x = (tracker_pose.pos[2]);
-      tracker->transform_stamped_.transform.translation.y = (tracker_pose.pos[0]);
-      tracker->transform_stamped_.transform.translation.z = tracker_pose.pos[1];
+      tracker->transform_stamped_.transform.translation.x = tracker_pose.pos[0];
+      tracker->transform_stamped_.transform.translation.y = tracker_pose.pos[1];
+      tracker->transform_stamped_.transform.translation.z = tracker_pose.pos[2];
 
-      tracker->transform_stamped_.transform.rotation.x = (tracker_pose.quat[2]);
-      tracker->transform_stamped_.transform.rotation.y = (tracker_pose.quat[0]);
-      tracker->transform_stamped_.transform.rotation.z = tracker_pose.quat[1];
+      tracker->transform_stamped_.transform.rotation.x = tracker_pose.quat[0];
+      tracker->transform_stamped_.transform.rotation.y = tracker_pose.quat[1];
+      tracker->transform_stamped_.transform.rotation.z = tracker_pose.quat[2];
       tracker->transform_stamped_.transform.rotation.w = tracker_pose.quat[3];
 
       tf_broadcaster.sendTransform(tracker->transform_stamped_);
